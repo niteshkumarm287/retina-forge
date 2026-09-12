@@ -1,0 +1,21 @@
+# Python-generated files
+__pycache__/
+*.py[cod]
+.venv/
+
+# macOS
+.DS_Store
+
+# Medical images and processed copies
+data/raw/*
+!data/raw/.gitkeep
+
+data/processed/*
+!data/processed/.gitkeep
+
+# Trained models can be large
+models/*
+!models/.gitkeep
+
+# Notebook temporary files
+.ipynb_checkpoints/
