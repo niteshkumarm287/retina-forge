@@ -54,7 +54,11 @@ attribution, label definitions, and licensing details are documented in
 - [Evaluation](docs/evaluation.md)
 - [Medical safety](docs/safety.md)
 - [Learning notes](docs/learning-notes.md)
-
+- [V1 roadmap](docs/roadmap.md)
+    
 ## Project status
 
-V1 planning and project setup.
+RetinaForge V1 is approximately 40% complete. Dataset preparation and integrity
+validation are complete; the PyTorch data pipeline is the next phase.
+
+See the [V1 roadmap](docs/roadmap.md) for completed and remaining work.
