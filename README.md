@@ -62,3 +62,7 @@ RetinaForge V1 is approximately 40% complete. Dataset preparation and integrity
 validation are complete; the PyTorch data pipeline is the next phase.
 
 See the [V1 roadmap](docs/roadmap.md) for completed and remaining work.
+
+## Development and review
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for local checks, configuration handling, and the review workflow.
