@@ -32,6 +32,7 @@ TEST_IMAGES = (
     / "b. Testing Set"
 )
 
+
 def inspect_images(split_name, images_directory, labels):
     image_paths = sorted(images_directory.glob("*.jpg"))
     image_names = {image_path.stem for image_path in image_paths}
@@ -66,40 +67,43 @@ def inspect_images(split_name, images_directory, labels):
     print(f"{split_name} unreadable images:", len(unreadable_images))
 
 
-labels = pd.read_csv(
-    TRAIN_LABELS,
-    usecols=["Image name", "Retinopathy grade"],
-)
+def main():
+    labels = pd.read_csv(
+        TRAIN_LABELS,
+        usecols=["Image name", "Retinopathy grade"],
+    )
 
-labels["target"] = labels["Retinopathy grade"].map(to_binary_label)
+    labels["target"] = labels["Retinopathy grade"].map(to_binary_label)
 
-print(labels.head())
-print()
-print("Number of training samples:", len(labels))
-print()
-print("Training examples per grade:")
-print(labels["Retinopathy grade"].value_counts().sort_index())
-print()
-print("Training V1 target distribution:")
-print(labels["target"].value_counts())
+    print(labels.head())
+    print()
+    print("Number of training samples:", len(labels))
+    print()
+    print("Training examples per grade:")
+    print(labels["Retinopathy grade"].value_counts().sort_index())
+    print()
+    print("Training V1 target distribution:")
+    print(labels["target"].value_counts())
 
-test_labels = pd.read_csv(
-    TEST_LABELS,
-    usecols=["Image name", "Retinopathy grade"],
-)
+    test_labels = pd.read_csv(
+        TEST_LABELS,
+        usecols=["Image name", "Retinopathy grade"],
+    )
 
-test_labels["target"] = test_labels["Retinopathy grade"].map(
-    to_binary_label
-)
+    test_labels["target"] = test_labels["Retinopathy grade"].map(to_binary_label)
 
-print()
-print("Number of holdout samples:", len(test_labels))
-print()
-print("Holdout examples per grade:")
-print(test_labels["Retinopathy grade"].value_counts().sort_index())
-print()
-print("Holdout V1 target distribution:")
-print(test_labels["target"].value_counts())
+    print()
+    print("Number of holdout samples:", len(test_labels))
+    print()
+    print("Holdout examples per grade:")
+    print(test_labels["Retinopathy grade"].value_counts().sort_index())
+    print()
+    print("Holdout V1 target distribution:")
+    print(test_labels["target"].value_counts())
 
-inspect_images("Training", TRAIN_IMAGES, labels)
-inspect_images("Holdout", TEST_IMAGES, test_labels)
+    inspect_images("Training", TRAIN_IMAGES, labels)
+    inspect_images("Holdout", TEST_IMAGES, test_labels)
+
+
+if __name__ == "__main__":
+    main()
