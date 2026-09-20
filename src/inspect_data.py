@@ -4,6 +4,7 @@ from pathlib import Path
 import pandas as pd
 from PIL import Image
 
+from src.data_utils import to_binary_label
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
@@ -30,14 +31,6 @@ TEST_IMAGES = (
     / "data/raw/idrid/B. Disease Grading/1. Original Images"
     / "b. Testing Set"
 )
-
-
-def to_binary_label(grade):
-    if grade >= 2:
-        return "referable_dr"
-
-    return "non_referable_dr"
-
 
 def inspect_images(split_name, images_directory, labels):
     image_paths = sorted(images_directory.glob("*.jpg"))
